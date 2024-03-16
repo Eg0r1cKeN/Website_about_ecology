@@ -1,9 +1,14 @@
+from flask import Flask, render_template
 
+app = Flask(__name__)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+@app.route('/')
+@app.route('/index')
+def index():
+    user = "Ученик Яндекс.Лицея"
+    return render_template('index.html', title='Домашняя страница', 
+                           username=user)
 
 
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    app.run(port=8080, host='127.0.0.1')
