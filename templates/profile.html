@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <link href="static/css/style.css" type="text/css" rel="stylesheet">
+    <title>{{title}}</title>
+</head>
+<body>
+<header>
+    {% include 'navbar.html' %}
+</header>
+<div class="container mt-5 mx-0">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Изменить имя</h2>
+            <form action="/change_username" method="post">
+                <div class="form-group">
+                    <label for="new_username">Новое имя:</label>
+                    <input type="text" class="form-control" id="new_username" name="new_username" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Изменить имя</button>
+                {{message}}
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h2>Изменить пароль</h2>
+            <form action="/change_password" method="post">
+                <div class="form-group">
+                    <label for="new_password">Новый пароль:</label>
+                    <input type="password" class="form-control" id="new_password" name="new_password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Изменить пароль</button>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <h2>Загрузить аватар</h2>
+                <div class="avatar-upload">
+                    <form method="POST" action="/upload_avatar" enctype="multipart/form-data">
+                        <input type="file" name="file" accept="image/*" required>
+                        <button type="submit" class="btn btn-primary">Загрузить аватар</button>
+                    </form>
+                </div>
+        </div>
+        <div class="col-md-6">
+            <h2>Удалить аккаунт</h2>
+            <p>Внимание! Удаление аккаунта приведет к удалению всех ваших файлов и необратимо.</p>
+            <form>
+                <button type="button" class="btn btn-danger" onclick="window.location.href = 'delete_account'">Удалить аккаунт</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,17 +7,22 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/style.css">
     <title>{{title}}</title>
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">Наше приложение</a>
-    </nav>
+    {% include 'navbar.html' %}
 </header>
-<!-- Begin page content -->
 <main role="main" class="container">
-    {% block content %}{% endblock %}
+    <h1>Добро пожаловать на ЭколоGi</h1>
+    <p>ЭколоGi - это удобный сервис, посвященный экологии в столице нашей страны, в Москве.</p>
+    <p>Здесь вы сможете найти, оценить и добавить:</p>
+    <p>1) Национальные парки;</p>
+    <p>2) Заповедники;</p>
+    <p>3) Пункты сбора и утилизации электронной техники и т.п.</p>
+    <p>Скорее регистрируйся и зови друзей!</p>
+    <p>Вместе мы сможем сделать этот мир чище!</p>
 </main>
 </body>
 </html>

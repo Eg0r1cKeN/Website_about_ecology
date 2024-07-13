@@ -1,9 +1,24 @@
-form.login_form {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 450px;
-    background-color: #ffcc00;
-    border: 1px solid gray;
-    border-radius: 5px;
-    padding: 10px;
+body {
+    margin-top: 0; /* Убираем верхний отступ у body */
+    padding-top: 0; /* Убираем верхний отступ у body */
+    background-color: #212121; /* Цвет фона */
+    color: #FFFFFF; /* Белый текст */
+    height: 100vh; /* Устанавливаем высоту body в 100% высоты окна просмотра */
+    overflow-y: auto; /* Добавляем вертикальную прокрутку, если содержимое больше высоты экрана */
+}
+.navbar {
+    background-color: #171717; /* Цвет верхней панели */
+    justify-content: flex-start;
+    min-width: 0px;
+}
+.btn-group {
+    margin-right: 20px; /* Оставляем отступ между файлами */
+}
+.btn-secondary, .btn-success, .btn-primary, .nav-link {
+    color: #FFFFFF; /* Белый текст для кнопок и ссылок */
+.btn-secondary {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: calc(100% - 40px); /* Adjust width to accommodate delete button */
 }
