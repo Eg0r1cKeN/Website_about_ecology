@@ -46,18 +46,25 @@ def apple_touch_p():
                                'apple-touch-icon-precomposed.png', mimetype='image/png')
 
 
-# страница с файлами
-@app.route('/files')
+# страница с новостями
+@app.route('/news')
 @login_required
 def index():
     db_sess = db_session.create_session()
-    if current_user.is_authenticated:
-        files = db_sess.query(UserFile).filter(UserFile.owner == current_user.id).all()
-        if not os.path.isdir(os.path.join(os.getcwd(), f'files/id_user_{current_user.id}')):
-            os.mkdir(os.path.join(os.getcwd(), f'files/id_user_{current_user.id}'))
-    else:
-        files = None
-    return render_template("index.html", files=files)
+    # if current_user.is_authenticated:
+    #     files = db_sess.query(UserFile).filter(UserFile.owner == current_user.id).all()
+    #     if not os.path.isdir(os.path.join(os.getcwd(), f'files/id_user_{current_user.id}')):
+    #         os.mkdir(os.path.join(os.getcwd(), f'files/id_user_{current_user.id}'))
+    # else:
+    #     files = None
+    return render_template("news.html")
+
+# Поиск материала
+@app.route('/search')
+@login_required
+def search():
+
+    return redirect("/news")
 
 
 # главная страница
@@ -65,7 +72,7 @@ def index():
 @app.route('/index')
 def files_page():
     if current_user.is_authenticated:
-        return redirect("/files")
+        return redirect("/news")
     else:
         return render_template('base.html')
 
