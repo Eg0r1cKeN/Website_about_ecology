@@ -68,11 +68,53 @@ def search():
     files = None
     return redirect("/news", files=files)
 
+
 # Создание записи
 @app.route('/creation')
 @login_required
 def creation():
     return render_template("creation.html")
+
+
+# # Публикация записи
+# @app.route('/public', methods=['GET', 'POST'])
+# @login_required
+# def public():
+#     if request.method == 'POST':
+#         db_sess = db_session.create_session()
+#         user = current_user
+#
+#         # Получаем данные из формы
+#         title = request.form.get('title')
+#         content = request.form.get('content')
+#         file = request.files.get('image')
+#
+#         if file:
+#             # Вычисляем хэш загружаемого файла
+#             file_hash = md5(file.read()).hexdigest()
+#             file.seek(0)  # Возвращаем указатель на начало файла
+#
+#             # Проверяем, нет ли уже такого файла в базе данных
+#             existing_file = db_sess.query(UserFile).filter_by(hash=file_hash).first()
+#             if existing_file:
+#                 return "Файл с таким содержимым уже загружен"
+#
+#             # Сохраняем информацию о файле в базе данных
+#             db_file = UserFile()
+#             db_file.heading = title  # Заголовок из формы
+#             db_file.photo = file.filename  # Используем имя файла в качестве пути к фото
+#             db_file.text = content  # Текст из формы
+#             db_file.owner = user.id
+#             db_file.directory = f"files/id_user_{user.id}/{file.heading}"
+#             db_file.hash = file_hash
+#             db_sess.add(db_file)
+#             db_sess.commit()
+#
+#             # Сохраняем сам файл на сервере
+#             file.save(f"files/id_user_{user.id}/{file.heading}")
+#
+#             return redirect("/")
+#     return render_template('news.html')
 
 
 # главная страница
@@ -160,10 +202,10 @@ def upload():
             db_file.hash = file_hash
             db_sess.add(db_file)
             db_sess.commit()
-
             # Сохраняем сам файл на сервере
+
             file.seek(0)  # Возвращаем указатель на начало файла
-            file.save(f"files/id_user_{user.id}/{file.filename}")
+            file.save(f"/static/files/id_user_{user.id}/{file.filename}")
 
             return redirect("/")
     return render_template('file_upload.html')
