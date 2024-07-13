@@ -49,7 +49,7 @@ def apple_touch_p():
 # страница с новостями
 @app.route('/news')
 @login_required
-def index():
+def news():
     db_sess = db_session.create_session()
     # if current_user.is_authenticated:
     #     files = db_sess.query(UserFile).filter(UserFile.owner == current_user.id).all()
@@ -57,14 +57,22 @@ def index():
     #         os.mkdir(os.path.join(os.getcwd(), f'files/id_user_{current_user.id}'))
     # else:
     #     files = None
-    return render_template("news.html")
+    files = [1, 2, 3, 4, 5]
+    return render_template("news.html", files=files)
+
 
 # Поиск материала
 @app.route('/search')
 @login_required
 def search():
+    files = None
+    return redirect("/news", files=files)
 
-    return redirect("/news")
+# Создание записи
+@app.route('/creation')
+@login_required
+def creation():
+    return render_template("creation.html")
 
 
 # главная страница

@@ -13,11 +13,16 @@
 <body>
 <header>
     {% include 'navbar.html' %}
-    <a class="btn btn-success mt-3" href="/search">Искать</a>
+    <form action="" method="get">
+        <input name="s" placeholder="Искать здесь..." type="search">
+        <button type="submit">Поиск</button>
+    </form>
     <div class="container mt-5 mx-0">
-<!--        <div class="row">-->
-<!--            {% if current_user.is_authenticated %}-->
-<!--                {% for file in files %}-->
+        <div class="row">
+            {% if current_user.is_authenticated %}
+                {% for file in files %}
+                     <p>file</p>
+            <p>p</p>>
 <!--                    <div class="col-md-3 mb-3">-->
 <!--                        <div class="btn-group d-flex" role="group" aria-label="File actions">-->
 <!--                            <button type="button" class="btn btn-secondary btn-block"-->
@@ -27,12 +32,12 @@
 <!--                            </button>-->
 <!--                        </div>-->
 <!--                    </div>-->
-<!--                {% endfor %}-->
-<!--            {% endif %}-->
-<!--        </div>-->
-<!--        {% if current_user.is_authenticated %}-->
-<!--            <a class="btn btn-success mt-3" href="/upload">Загрузить файл</a>-->
-<!--        {% endif %}-->
+                {% endfor %}
+            {% endif %}
+        </div>
+        {% if current_user.is_authenticated %}
+            <a class="btn btn-success mt-3" href="/upload">Загрузить файл</a>
+        {% endif %}
     </div>
 </header>
 </body>

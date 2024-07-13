@@ -9,7 +9,8 @@ class UserFile(SqlAlchemyBase, UserMixin, SerializerMixin):
     __tablename__ = 'files'
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
-    heading = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    heading = sqlalchemy.Column(sqlalchemy.String)
+    photo = sqlalchemy.Column(sqlalchemy.String)
+    text = sqlalchemy.Column(sqlalchemy.String)
     owner = sqlalchemy.Column(sqlalchemy.Integer)
     directory = sqlalchemy.Column(sqlalchemy.String)
-    hash = sqlalchemy.Column(sqlalchemy.String)
